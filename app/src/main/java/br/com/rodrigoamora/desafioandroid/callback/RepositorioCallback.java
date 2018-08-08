@@ -4,11 +4,12 @@ import java.util.List;
 
 import br.com.rodrigoamora.desafioandroid.delegate.RepositorioDelegate;
 import br.com.rodrigoamora.desafioandroid.model.Repositorio;
+import br.com.rodrigoamora.desafioandroid.module.callback.ListaRepositorios;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RepositorioCallback implements Callback<List<Repositorio>> {
+public class RepositorioCallback implements Callback<ListaRepositorios> {
 
     private RepositorioDelegate delegate;
 
@@ -17,9 +18,9 @@ public class RepositorioCallback implements Callback<List<Repositorio>> {
     }
 
     @Override
-    public void onResponse(Call<List<Repositorio>> call, Response<List<Repositorio>> response) {
+    public void onResponse(Call<ListaRepositorios> call, Response<ListaRepositorios> response) {
         if (response.isSuccessful()) {
-            List<Repositorio> repositorios = response.body();
+            List<Repositorio> repositorios = response.body().getItems();
             if (repositorios != null) {
                 delegate.success(repositorios);
             } else {
@@ -31,7 +32,7 @@ public class RepositorioCallback implements Callback<List<Repositorio>> {
     }
 
     @Override
-    public void onFailure(Call<List<Repositorio>> call, Throwable t) {
+    public void onFailure(Call<ListaRepositorios> call, Throwable t) {
         delegate.error();
     }
 

@@ -22,11 +22,11 @@ import br.com.rodrigoamora.desafioandroid.callback.RepositorioCallback;
 import br.com.rodrigoamora.desafioandroid.component.RepositorioComponent;
 import br.com.rodrigoamora.desafioandroid.delegate.RepositorioDelegate;
 import br.com.rodrigoamora.desafioandroid.model.Repositorio;
+import br.com.rodrigoamora.desafioandroid.module.callback.ListaRepositorios;
 import br.com.rodrigoamora.desafioandroid.service.RepositorioService;
 import br.com.rodrigoamora.desafioandroid.ui.activity.MainActivity;
 import br.com.rodrigoamora.desafioandroid.ui.adapter.RepositorioAdapter;
 import br.com.rodrigoamora.desafioandroid.ui.listener.OnItemClickListener;
-import br.com.rodrigoamora.desafioandroid.util.FragmentUtil;
 import br.com.rodrigoamora.desafioandroid.util.NetworkUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,7 +40,7 @@ public class RepositorioFragment extends Fragment implements RepositorioDelegate
     @Inject
     RepositorioService service;
 
-    private Call<List<Repositorio>> call;
+    private Call<ListaRepositorios> call;
     private List<Repositorio> repositorios;
     private Integer page;
     private String linguagem;
