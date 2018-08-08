@@ -32,6 +32,7 @@ public abstract class PaginateListener extends RecyclerView.OnScrollListener {
                 previousTotal = totalItemCount;
             }
         }
+
         if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
             current_page++;
             onLoadMore(current_page);
