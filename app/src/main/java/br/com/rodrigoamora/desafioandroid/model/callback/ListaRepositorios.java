@@ -1,4 +1,4 @@
-package br.com.rodrigoamora.desafioandroid.module.callback;
+package br.com.rodrigoamora.desafioandroid.model.callback;
 
 import java.util.List;
 

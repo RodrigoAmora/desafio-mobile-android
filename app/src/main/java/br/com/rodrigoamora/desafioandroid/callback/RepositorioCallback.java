@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.rodrigoamora.desafioandroid.delegate.RepositorioDelegate;
 import br.com.rodrigoamora.desafioandroid.model.Repositorio;
-import br.com.rodrigoamora.desafioandroid.module.callback.ListaRepositorios;
+import br.com.rodrigoamora.desafioandroid.model.callback.ListaRepositorios;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

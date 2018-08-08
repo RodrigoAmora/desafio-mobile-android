@@ -23,7 +23,7 @@ import br.com.rodrigoamora.desafioandroid.callback.RepositorioCallback;
 import br.com.rodrigoamora.desafioandroid.component.RepositorioComponent;
 import br.com.rodrigoamora.desafioandroid.delegate.RepositorioDelegate;
 import br.com.rodrigoamora.desafioandroid.model.Repositorio;
-import br.com.rodrigoamora.desafioandroid.module.callback.ListaRepositorios;
+import br.com.rodrigoamora.desafioandroid.model.callback.ListaRepositorios;
 import br.com.rodrigoamora.desafioandroid.service.RepositorioService;
 import br.com.rodrigoamora.desafioandroid.ui.activity.MainActivity;
 import br.com.rodrigoamora.desafioandroid.ui.adapter.RepositorioAdapter;

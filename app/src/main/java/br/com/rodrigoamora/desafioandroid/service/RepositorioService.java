@@ -1,7 +1,7 @@
 package br.com.rodrigoamora.desafioandroid.service;
 
 
-import br.com.rodrigoamora.desafioandroid.module.callback.ListaRepositorios;
+import br.com.rodrigoamora.desafioandroid.model.callback.ListaRepositorios;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
