@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         switch (id) {
             case R.id.nav_repositories:
                 FragmentUtil.changeFragment(R.id.conatiner, new RepositorioFragment(), getFragmentManager(), false, null);
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void setTitulo(String titulo) {
+    public void setTitulo(String titulo) {
         getSupportActionBar().setTitle(titulo);
     }
 
