@@ -1,5 +1,6 @@
 package br.com.rodrigoamora.desafioandroid.module;
 
+import br.com.rodrigoamora.desafioandroid.BuildConfig;
 import br.com.rodrigoamora.desafioandroid.factory.RetrofitFactory;
 import br.com.rodrigoamora.desafioandroid.service.PullRequestService;
 import dagger.Module;
@@ -11,7 +12,7 @@ public class PullRequestModule {
 
     @Provides
     public PullRequestService getPullRequestService() {
-        Retrofit retrofit = RetrofitFactory.createRetrofit();
+        Retrofit retrofit = RetrofitFactory.createRetrofit(BuildConfig.API_GITHUB);
         PullRequestService service = retrofit.create(PullRequestService.class);
         return service;
     }

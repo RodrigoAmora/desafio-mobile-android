@@ -1,15 +1,13 @@
 package br.com.rodrigoamora.desafioandroid.factory;
 
-
-import br.com.rodrigoamora.desafioandroid.BuildConfig;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitFactory {
 
-    public static Retrofit createRetrofit() {
+    public static Retrofit createRetrofit(String url) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BuildConfig.API_GITHUB)
+                .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit;
