@@ -113,6 +113,7 @@ public class PullRequestFramgnet extends Fragment implements Delegate<List<PullR
 
     public void getMaintActivity() {
         activity = (MainActivity) getActivity();
+        activity.setTitle(repo);
     }
 
     private void configureRecyclerView() {
