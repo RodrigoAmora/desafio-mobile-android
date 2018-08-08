@@ -5,7 +5,6 @@ public class Owner {
     private Long id;
     private String login, avatar_url;
     private String html_url, repos_url;
-    private Owner owner;
 
     public Long getId() {
         return id;
@@ -45,14 +44,6 @@ public class Owner {
 
     public void setRepos_url(String repos_url) {
         this.repos_url = repos_url;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
     }
 
 }

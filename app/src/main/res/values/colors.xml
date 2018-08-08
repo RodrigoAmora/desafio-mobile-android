@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="backgroundRecyclerview">#C1D1F0</color>
+    <color name="steelBlue">#4682B4</color>
+    <color name="gold">#FFD700</color>
 </resources>

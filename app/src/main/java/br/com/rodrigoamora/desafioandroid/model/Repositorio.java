@@ -9,6 +9,7 @@ public class Repositorio implements Serializable {
     private String html_url, url, clone_url;
     private String description, language;
     private Long stargazers_count, forks;
+    private Owner owner;
 
     public Long getId() {
         return id;
@@ -88,6 +89,14 @@ public class Repositorio implements Serializable {
 
     public void setForks(Long forks) {
         this.forks = forks;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
 }

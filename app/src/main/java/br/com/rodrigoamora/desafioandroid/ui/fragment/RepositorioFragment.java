@@ -153,7 +153,6 @@ public class RepositorioFragment extends Fragment implements RepositorioDelegate
     @Override
     public void success(List<Repositorio> repositorios) {
         if (!repositorios.isEmpty()) {
-            //this.repositorios = repositorios;
             this.repositorios.addAll(repositorios);
             if (page == 1) {
                 populateRecyclerView();
