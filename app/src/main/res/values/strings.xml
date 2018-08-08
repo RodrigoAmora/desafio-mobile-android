@@ -16,6 +16,7 @@
     <string name="name">Name:</string>
     <string name="pullresquests">Pullrequests</string>
     <string name="title">Title:</string>
+    <string name="repositories">Repositories</string>
     <string name="searching_repositories">Searching repositories</string>
     <string name="searching_pullrequests">Searching pullrequests</string>
     <string name="stars">Stars:</string>
