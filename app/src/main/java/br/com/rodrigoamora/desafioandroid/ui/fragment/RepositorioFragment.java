@@ -148,7 +148,7 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
 
     @Override
     public void error() {
-        Toast.makeText(activity, getString(R.string.error_get_repositories), Toast.LENGTH_LONG).show();
+        Toast.makeText(activity, getString(R.string.error_consult_repositories), Toast.LENGTH_LONG).show();
     }
 
     @Override
