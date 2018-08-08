@@ -1,4 +1,4 @@
-package br.com.rodrigoamora.desafioandroid.ui.viewHolder;
+package br.com.rodrigoamora.desafioandroid.ui.viewholder;
 
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.RecyclerView;

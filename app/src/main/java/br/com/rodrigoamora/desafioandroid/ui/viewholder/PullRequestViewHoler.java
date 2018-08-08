@@ -1,4 +1,4 @@
-package br.com.rodrigoamora.desafioandroid.ui.viewHolder;
+package br.com.rodrigoamora.desafioandroid.ui.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PullRequestViewholer extends RecyclerView.ViewHolder {
+public class PullRequestViewHoler extends RecyclerView.ViewHolder {
 
     @BindView(R.id.avatar)
     CircleImageView avatar;
@@ -23,7 +23,7 @@ public class PullRequestViewholer extends RecyclerView.ViewHolder {
     @BindView(R.id.username)
     TextView username;
 
-    public PullRequestViewholer(View itemView) {
+    public PullRequestViewHoler(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }

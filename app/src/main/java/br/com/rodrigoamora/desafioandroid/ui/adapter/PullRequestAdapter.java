@@ -11,11 +11,9 @@ import java.util.List;
 
 import br.com.rodrigoamora.desafioandroid.R;
 import br.com.rodrigoamora.desafioandroid.model.PullRequest;
-import br.com.rodrigoamora.desafioandroid.model.Repositorio;
-import br.com.rodrigoamora.desafioandroid.ui.viewHolder.PullRequestViewholer;
-import br.com.rodrigoamora.desafioandroid.ui.viewHolder.RepositorioViewHolder;
+import br.com.rodrigoamora.desafioandroid.ui.viewholder.PullRequestViewHoler;
 
-public class PullRequestAdapter extends RecyclerView.Adapter<PullRequestViewholer> {
+public class PullRequestAdapter extends RecyclerView.Adapter<PullRequestViewHoler> {
 
     private Context context;
     private List<PullRequest> pullRequests;
@@ -27,15 +25,15 @@ public class PullRequestAdapter extends RecyclerView.Adapter<PullRequestViewhole
 
     @NonNull
     @Override
-    public PullRequestViewholer onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PullRequestViewHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.adapter_pullrequest, parent,false);
-        PullRequestViewholer viewHolder = new PullRequestViewholer(rowView);
+        PullRequestViewHoler viewHolder = new PullRequestViewHoler(rowView);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PullRequestViewholer holder, int position) {
+    public void onBindViewHolder(@NonNull PullRequestViewHoler holder, int position) {
         holder.setValues(pullRequests.get(position));
     }
 

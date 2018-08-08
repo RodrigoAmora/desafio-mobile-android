@@ -12,7 +12,7 @@ import java.util.List;
 import br.com.rodrigoamora.desafioandroid.R;
 import br.com.rodrigoamora.desafioandroid.model.Repositorio;
 import br.com.rodrigoamora.desafioandroid.ui.listener.OnItemClickListener;
-import br.com.rodrigoamora.desafioandroid.ui.viewHolder.RepositorioViewHolder;
+import br.com.rodrigoamora.desafioandroid.ui.viewholder.RepositorioViewHolder;
 
 public class RepositorioAdapter extends RecyclerView.Adapter<RepositorioViewHolder> {
 
