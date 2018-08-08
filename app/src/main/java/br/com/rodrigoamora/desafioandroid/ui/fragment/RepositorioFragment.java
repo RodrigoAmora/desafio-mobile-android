@@ -1,6 +1,5 @@
 package br.com.rodrigoamora.desafioandroid.ui.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -21,7 +20,7 @@ import br.com.rodrigoamora.desafioandroid.R;
 import br.com.rodrigoamora.desafioandroid.app.MyApplication;
 import br.com.rodrigoamora.desafioandroid.callback.RepositorioCallback;
 import br.com.rodrigoamora.desafioandroid.component.RepositorioComponent;
-import br.com.rodrigoamora.desafioandroid.delegate.RepositorioDelegate;
+import br.com.rodrigoamora.desafioandroid.delegate.Delegate;
 import br.com.rodrigoamora.desafioandroid.model.Repositorio;
 import br.com.rodrigoamora.desafioandroid.model.callback.ListaRepositorios;
 import br.com.rodrigoamora.desafioandroid.service.RepositorioService;
@@ -29,13 +28,14 @@ import br.com.rodrigoamora.desafioandroid.ui.activity.MainActivity;
 import br.com.rodrigoamora.desafioandroid.ui.adapter.RepositorioAdapter;
 import br.com.rodrigoamora.desafioandroid.ui.listener.OnItemClickListener;
 import br.com.rodrigoamora.desafioandroid.ui.listener.PaginateListener;
+import br.com.rodrigoamora.desafioandroid.util.FragmentUtil;
 import br.com.rodrigoamora.desafioandroid.util.NetworkUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import retrofit2.Call;
 
-public class RepositorioFragment extends Fragment implements RepositorioDelegate<List<Repositorio>> {
+public class RepositorioFragment extends android.app.Fragment implements Delegate<List<Repositorio>> {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -123,8 +123,9 @@ public class RepositorioFragment extends Fragment implements RepositorioDelegate
                 @Override
                 public void onItemClick(Repositorio repositorio) {
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("repositorio", repositorio);
-                    //FragmentUtil.changeFragment(R.id.conatiner, new DetailsFragment(), activity.getSupportFragmentManager(), true, bundle);
+                    bundle.putString("owner", repositorio.getOwner().getLogin());
+                    bundle.putString("repositorio", repositorio.getName());
+                    FragmentUtil.changeFragment(R.id.conatiner, new PullRequestFramgnet(), activity.getFragmentManager(), true, bundle);
                 }
             });
         } else {

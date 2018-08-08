@@ -2,7 +2,7 @@ package br.com.rodrigoamora.desafioandroid.callback;
 
 import java.util.List;
 
-import br.com.rodrigoamora.desafioandroid.delegate.RepositorioDelegate;
+import br.com.rodrigoamora.desafioandroid.delegate.Delegate;
 import br.com.rodrigoamora.desafioandroid.model.Repositorio;
 import br.com.rodrigoamora.desafioandroid.model.callback.ListaRepositorios;
 import retrofit2.Call;
@@ -11,9 +11,9 @@ import retrofit2.Response;
 
 public class RepositorioCallback implements Callback<ListaRepositorios> {
 
-    private RepositorioDelegate delegate;
+    private Delegate delegate;
 
-    public RepositorioCallback(RepositorioDelegate delegate) {
+    public RepositorioCallback(Delegate delegate) {
         this.delegate = delegate;
     }
 

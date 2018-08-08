@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="backgroundRecyclerview">#C1D1F0</color>
-    <color name="steelBlue">#4682B4</color>
     <color name="gold">#FFD700</color>
+    <color name="steelBlue">#4682B4</color>
+    <color name="silver">#C0C0C0</color>
 </resources>

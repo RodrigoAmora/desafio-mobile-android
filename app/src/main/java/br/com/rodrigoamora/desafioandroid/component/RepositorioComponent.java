@@ -7,6 +7,6 @@ import dagger.Component;
 @Component(modules = RepositorioModule.class)
 public interface RepositorioComponent {
 
-    void inject(RepositorioFragment fragment);
+    void inject(RepositorioFragment repositorioFragment);
 
 }
