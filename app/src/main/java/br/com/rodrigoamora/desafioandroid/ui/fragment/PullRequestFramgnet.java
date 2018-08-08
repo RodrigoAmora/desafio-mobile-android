@@ -66,7 +66,7 @@ public class PullRequestFramgnet extends Fragment implements Delegate<List<PullR
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragmrnt_pullrequest, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_pullrequest, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
