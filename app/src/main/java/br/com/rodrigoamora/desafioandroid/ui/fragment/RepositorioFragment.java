@@ -123,7 +123,7 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
                 @Override
                 public void onItemClick(Repositorio repositorio) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("owner", repositorio.getOwner().getLogin());
+                    bundle.putSerializable("owner", repositorio.getOwner().getLogin());
                     bundle.putString("repositorio", repositorio.getName());
                     FragmentUtil.changeFragment(R.id.conatiner, new PullRequestFramgnet(), activity.getFragmentManager(), true, bundle);
                 }

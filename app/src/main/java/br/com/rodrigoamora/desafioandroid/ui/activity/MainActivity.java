@@ -30,16 +30,14 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
 
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-        if (count == 1) {
+        int count = getFragmentManager().getBackStackEntryCount();
+        if (count == 0) {
             finish();
             moveTaskToBack(true);
         } else {
-            getSupportFragmentManager().popBackStack();
+            getFragmentManager().popBackStack();
         }
     }
 
