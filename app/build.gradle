@@ -41,11 +41,6 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$materialDesignVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    //GOOGLE-PLAY-SERVICES
-    def googlePlayServicesVersion = '15.0.1'
-    implementation "com.google.android.gms:play-services-maps:$googlePlayServicesVersion"
-    implementation "com.google.android.gms:play-services-location:$googlePlayServicesVersion"
-
     //BUTTER-KNIFE
     def butterKnifeVersion = '8.8.1'
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
