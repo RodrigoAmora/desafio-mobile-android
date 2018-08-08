@@ -33,6 +33,14 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if (count == 1) {
+            finish();
+            moveTaskToBack(true);
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
     }
 
     @Override
