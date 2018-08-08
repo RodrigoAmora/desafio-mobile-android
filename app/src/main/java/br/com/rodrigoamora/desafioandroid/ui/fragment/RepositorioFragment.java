@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,6 +28,7 @@ import br.com.rodrigoamora.desafioandroid.service.RepositorioService;
 import br.com.rodrigoamora.desafioandroid.ui.activity.MainActivity;
 import br.com.rodrigoamora.desafioandroid.ui.adapter.RepositorioAdapter;
 import br.com.rodrigoamora.desafioandroid.ui.listener.OnItemClickListener;
+import br.com.rodrigoamora.desafioandroid.ui.listener.PaginateListener;
 import br.com.rodrigoamora.desafioandroid.util.NetworkUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +48,7 @@ public class RepositorioFragment extends Fragment implements RepositorioDelegate
     private String linguagem;
     private Unbinder unbinder;
 
+    private RepositorioAdapter adapter;
     private RepositorioCallback callback;
     private MainActivity activity;
 
@@ -54,6 +57,7 @@ public class RepositorioFragment extends Fragment implements RepositorioDelegate
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         callback = new RepositorioCallback(this);
+        repositorios = new ArrayList();
         linguagem = "language:Java";
         page = 1;
     }
@@ -102,19 +106,30 @@ public class RepositorioFragment extends Fragment implements RepositorioDelegate
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(linearLayout);
         recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setOnScrollListener(new PaginateListener(linearLayout) {
+            @Override
+            public void onLoadMore(int current_page) {
+                page++;
+                getRepositorios();
+            }
+        });
     }
 
     private void populateRecyclerView() {
-        RepositorioAdapter adapter = new RepositorioAdapter(activity, repositorios);
-        recyclerView.setAdapter(adapter);
-        adapter.setListener(new OnItemClickListener<Repositorio>() {
-            @Override
-            public void onItemClick(Repositorio repositorio) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("repositorio", repositorio);
-                //FragmentUtil.changeFragment(R.id.conatiner, new DetailsFragment(), activity.getSupportFragmentManager(), true, bundle);
-            }
-        });
+        if (adapter == null) {
+            adapter = new RepositorioAdapter(activity, repositorios);
+            recyclerView.setAdapter(adapter);
+            adapter.setListener(new OnItemClickListener<Repositorio>() {
+                @Override
+                public void onItemClick(Repositorio repositorio) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("repositorio", repositorio);
+                    //FragmentUtil.changeFragment(R.id.conatiner, new DetailsFragment(), activity.getSupportFragmentManager(), true, bundle);
+                }
+            });
+        } else {
+            recyclerView.refreshDrawableState();
+        }
     }
 
     private void getRepositorios() {
@@ -126,6 +141,10 @@ public class RepositorioFragment extends Fragment implements RepositorioDelegate
         }
     }
 
+    private void atualizarRecyclerView() {
+        adapter.notifyDataSetChanged();
+    }
+
     @Override
     public void error() {
         Toast.makeText(activity, getString(R.string.error_get_repositories), Toast.LENGTH_LONG).show();
@@ -134,10 +153,15 @@ public class RepositorioFragment extends Fragment implements RepositorioDelegate
     @Override
     public void success(List<Repositorio> repositorios) {
         if (!repositorios.isEmpty()) {
-            this.repositorios = repositorios;
-            populateRecyclerView();
+            //this.repositorios = repositorios;
+            this.repositorios.addAll(repositorios);
+            if (page == 1) {
+                populateRecyclerView();
+            } else {
+                atualizarRecyclerView();
+            }
         } else {
-
+            Toast.makeText(activity, getString(R.string.no_result), Toast.LENGTH_LONG).show();
         }
     }
 

@@ -15,6 +15,7 @@
     <string name="forks">Forks:</string>
     <string name="name">Name:</string>
     <string name="pullresquests">Pullrequests</string>
+    <string name="no_result">No result!</string>
     <string name="title">Title:</string>
     <string name="repositories">Repositories</string>
     <string name="searching_repositories">Searching repositories</string>
