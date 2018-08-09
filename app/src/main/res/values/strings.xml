@@ -12,11 +12,13 @@
     <string name="error_consult_pullrequests">Could not possible get pullrequests.</string>
 
     <string name="clone_ur">Clone URL:</string>
+    <string name="closed">Closed</string>
     <string name="date">Date:</string>
     <string name="forks">Forks:</string>
     <string name="name">Name:</string>
-    <string name="pullresquests">Pullrequests</string>
     <string name="no_result">No result!</string>
+    <string name="opened">Opened</string>
+    <string name="pullresquests">Pullrequests</string>
     <string name="title">Title:</string>
     <string name="repositories">Repositories</string>
     <string name="searching_repositories">Searching repositories</string>

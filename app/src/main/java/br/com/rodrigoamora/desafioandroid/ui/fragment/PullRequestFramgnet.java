@@ -145,8 +145,10 @@ public class PullRequestFramgnet extends Fragment implements Delegate<List<PullR
                 fechados++;
             }
         }
-        opened.setText(abertos.toString());
-        closed.setText(fechados.toString());
+        String totalAberots = abertos.toString()+" "+getString(R.string.opened);
+        String totalFechados = fechados.toString()+" "+getString(R.string.closed);
+        opened.setText(totalAberots);
+        closed.setText(totalFechados);
     }
 
     private void getPullRequests() {
