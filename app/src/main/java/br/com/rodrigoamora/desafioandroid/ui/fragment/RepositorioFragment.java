@@ -58,8 +58,13 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
         setHasOptionsMenu(true);
         callback = new RepositorioCallback(this);
         repositorios = new ArrayList();
-        linguagem = "language:Java";
-        page = 1;
+        if (savedInstanceState != null) {
+            linguagem = savedInstanceState.getString("linguagem");
+            page = savedInstanceState.getInt("page");
+        } else {
+            linguagem = "language:Java";
+            page = 1;
+        }
     }
 
     @Nullable
@@ -77,6 +82,22 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
         configureRecyclerView();
         getComponents();
         getRepositorios();
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            linguagem = savedInstanceState.getString("linguagem");
+            page = savedInstanceState.getInt("page");
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("linguagem", linguagem);
+        outState.putInt("page", page);
     }
 
     @Override

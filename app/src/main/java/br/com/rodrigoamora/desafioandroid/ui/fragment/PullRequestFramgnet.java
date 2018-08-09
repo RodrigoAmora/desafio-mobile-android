@@ -59,8 +59,16 @@ public class PullRequestFramgnet extends Fragment implements Delegate<List<PullR
         setHasOptionsMenu(true);
         callback = new PullRequestCallback(this);
         pullRequests = new ArrayList();
-        repo = getArguments().getString("repositorio");
-        owner = getArguments().getString("owner");
+
+        if (getArguments() != null) {
+            repo = getArguments().getString("repositorio");
+            owner = getArguments().getString("owner");
+        }
+
+        if (savedInstanceState != null) {
+            repo = savedInstanceState.getString("repositorio");
+            owner = savedInstanceState.getString("owner");
+        }
     }
 
     @Nullable
@@ -78,6 +86,22 @@ public class PullRequestFramgnet extends Fragment implements Delegate<List<PullR
         configureRecyclerView();
         getComponents();
         getPullRequests();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("repositorio", repo);
+        outState.putString("owner", owner);
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            repo = savedInstanceState.getString("repositorio");
+            owner = savedInstanceState.getString("owner");
+        }
     }
 
     @Override
