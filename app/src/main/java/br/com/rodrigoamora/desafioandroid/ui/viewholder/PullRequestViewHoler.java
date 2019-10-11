@@ -35,6 +35,7 @@ public class PullRequestViewHoler extends RecyclerView.ViewHolder {
         } else {
             Picasso.get().load(R.mipmap.ic_launcher_round).into(avatar);
         }
+
         descricao.setText(pullRequest.getBody());
         titulo.setText(pullRequest.getTitle());
         username.setText(pullRequest.getUser().getLogin());
