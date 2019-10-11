@@ -1,5 +1,6 @@
 package br.com.rodrigoamora.desafioandroid.ui.activity;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configurarNavigationView();
-        FragmentUtil.changeFragment(R.id.conatiner, new RepositorioFragment(), getFragmentManager(), false, null);
+        changeFragment(new RepositorioFragment());
     }
 
     @Override
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_repositories:
-                FragmentUtil.changeFragment(R.id.conatiner, new RepositorioFragment(), getFragmentManager(), false, null);
+                changeFragment(new RepositorioFragment());
                 break;
         }
 
@@ -90,4 +91,7 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setTitle(titulo);
     }
 
+    private void changeFragment(Fragment fragment) {
+        FragmentUtil.changeFragment(R.id.conatiner, fragment, getFragmentManager(), false, null);
+    }
 }
