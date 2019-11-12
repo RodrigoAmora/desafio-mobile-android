@@ -1,8 +1,9 @@
 package br.com.rodrigoamora.desafioandroid.ui.viewholder;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -16,10 +17,13 @@ public class PullRequestViewHoler extends RecyclerView.ViewHolder {
 
     @BindView(R.id.avatar)
     CircleImageView avatar;
+
     @BindView(R.id.titulo_pullrequest)
     TextView titulo;
+
     @BindView(R.id.descricao_pullrequest)
     TextView descricao;
+
     @BindView(R.id.username)
     TextView username;
 

@@ -2,14 +2,15 @@ package br.com.rodrigoamora.desafioandroid.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+
     @Inject
     RepositorioService service;
 
@@ -56,8 +58,10 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
         callback = new RepositorioCallback(this);
         repositorios = new ArrayList();
+
         if (savedInstanceState != null) {
             linguagem = savedInstanceState.getString("linguagem");
             page = savedInstanceState.getInt("page");
@@ -185,5 +189,4 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
             Toast.makeText(activity, getString(R.string.no_result), Toast.LENGTH_LONG).show();
         }
     }
-
 }

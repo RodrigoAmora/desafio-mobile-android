@@ -1,9 +1,10 @@
 package br.com.rodrigoamora.desafioandroid.ui.viewholder;
 
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -17,16 +18,22 @@ public class RepositorioViewHolder extends RecyclerView.ViewHolder{
 
     @BindView(R.id.layout_repositorio)
     CoordinatorLayout repositorioLayout;
+
     @BindView(R.id.avatar)
     CircleImageView avatar;
+
     @BindView(R.id.name_owner)
     TextView nameOwner;
+
     @BindView(R.id.name_repository)
     TextView nameRepository;
+
     @BindView(R.id.forks)
     TextView forks;
+
     @BindView(R.id.desc_repository)
     TextView descRepository;
+
     @BindView(R.id.stars)
     TextView stars;
 

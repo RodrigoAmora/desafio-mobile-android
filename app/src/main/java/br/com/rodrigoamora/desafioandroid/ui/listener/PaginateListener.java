@@ -1,7 +1,7 @@
 package br.com.rodrigoamora.desafioandroid.ui.listener;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class PaginateListener extends RecyclerView.OnScrollListener {
 
