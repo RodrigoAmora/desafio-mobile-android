@@ -2,6 +2,8 @@ package br.com.rodrigoamora.desafioandroid.app;
 
 import android.app.Application;
 
+import com.orhanobut.hawk.Hawk;
+
 import br.com.rodrigoamora.desafioandroid.component.DaggerPullRequestComponent;
 import br.com.rodrigoamora.desafioandroid.component.DaggerRepositorioComponent;
 import br.com.rodrigoamora.desafioandroid.component.PullRequestComponent;
@@ -16,6 +18,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         createComponents();
+        initHawk();
     }
 
     private void createComponents() {
@@ -23,6 +26,9 @@ public class MyApplication extends Application {
         repositorioComponent = DaggerRepositorioComponent.builder().build();
     }
 
+    private void initHawk() {
+        Hawk.init(this).build();
+    }
 
     public PullRequestComponent getPullRequestComponent() {
         return pullRequestComponent;
@@ -31,5 +37,4 @@ public class MyApplication extends Application {
     public RepositorioComponent getRepositorioComponent() {
         return repositorioComponent;
     }
-
 }

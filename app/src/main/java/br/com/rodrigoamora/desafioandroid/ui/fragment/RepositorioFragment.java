@@ -22,6 +22,7 @@ import br.com.rodrigoamora.desafioandroid.app.MyApplication;
 import br.com.rodrigoamora.desafioandroid.callback.RepositorioCallback;
 import br.com.rodrigoamora.desafioandroid.component.RepositorioComponent;
 import br.com.rodrigoamora.desafioandroid.delegate.Delegate;
+import br.com.rodrigoamora.desafioandroid.manager.CacheManager;
 import br.com.rodrigoamora.desafioandroid.model.Repositorio;
 import br.com.rodrigoamora.desafioandroid.model.callback.ListaRepositorios;
 import br.com.rodrigoamora.desafioandroid.service.RepositorioService;
@@ -38,6 +39,8 @@ import retrofit2.Call;
 
 public class RepositorioFragment extends android.app.Fragment implements Delegate<List<Repositorio>> {
 
+    private String TAG_CACHE = "repositories";
+
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
@@ -50,6 +53,7 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
     private String linguagem;
     private Unbinder unbinder;
 
+    private CacheManager<List<Repositorio>> cacheManager;
     private RepositorioAdapter adapter;
     private RepositorioCallback callback;
     private MainActivity activity;
@@ -59,8 +63,9 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
-        callback = new RepositorioCallback(this);
-        repositorios = new ArrayList();
+        this.callback = new RepositorioCallback(this);
+        this.repositorios = new ArrayList();
+        this.cacheManager = new CacheManager<>();
 
         if (savedInstanceState != null) {
             linguagem = savedInstanceState.getString("linguagem");
@@ -147,10 +152,14 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
             adapter.setListener(new OnItemClickListener<Repositorio>() {
                 @Override
                 public void onItemClick(Repositorio repositorio) {
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("owner", repositorio.getOwner().getLogin());
-                    bundle.putString("repositorio", repositorio.getName());
-                    FragmentUtil.changeFragment(R.id.conatiner, new PullRequestFramgnet(), activity.getFragmentManager(), true, bundle);
+                    if (NetworkUtil.checkConnection(activity)) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("owner", repositorio.getOwner().getLogin());
+                        bundle.putString("repository", repositorio.getName());
+                        FragmentUtil.changeFragment(R.id.conatiner, new PullRequestFramgnet(), activity.getFragmentManager(), true, bundle);
+                    } else {
+                        Toast.makeText(activity, getString(R.string.alert_no_internet), Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         } else {
@@ -164,6 +173,8 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
             call.enqueue(callback);
         } else {
             Toast.makeText(activity, getString(R.string.alert_no_internet), Toast.LENGTH_LONG).show();
+            this.repositorios = cacheManager.getCache(TAG_CACHE);
+            populateRecyclerView();
         }
     }
 
@@ -180,6 +191,10 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
     public void success(List<Repositorio> repositorios) {
         if (!repositorios.isEmpty()) {
             this.repositorios.addAll(repositorios);
+
+            this.cacheManager.deleteCache(TAG_CACHE);
+            this.cacheManager.saveCache(TAG_CACHE, this.repositorios);
+
             if (page == 1) {
                 populateRecyclerView();
             } else {
