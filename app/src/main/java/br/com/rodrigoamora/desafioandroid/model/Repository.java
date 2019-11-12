@@ -2,7 +2,7 @@ package br.com.rodrigoamora.desafioandroid.model;
 
 import java.io.Serializable;
 
-public class Repositorio implements Serializable {
+public class Repository implements Serializable {
 
     private Long id;
     private String name, full_name;

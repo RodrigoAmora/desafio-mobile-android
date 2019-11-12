@@ -19,15 +19,15 @@ import javax.inject.Inject;
 
 import br.com.rodrigoamora.desafioandroid.R;
 import br.com.rodrigoamora.desafioandroid.app.MyApplication;
-import br.com.rodrigoamora.desafioandroid.callback.RepositorioCallback;
+import br.com.rodrigoamora.desafioandroid.callback.RepositoryCallback;
 import br.com.rodrigoamora.desafioandroid.component.RepositorioComponent;
 import br.com.rodrigoamora.desafioandroid.delegate.Delegate;
 import br.com.rodrigoamora.desafioandroid.manager.CacheManager;
-import br.com.rodrigoamora.desafioandroid.model.Repositorio;
+import br.com.rodrigoamora.desafioandroid.model.Repository;
 import br.com.rodrigoamora.desafioandroid.model.callback.ListaRepositorios;
 import br.com.rodrigoamora.desafioandroid.service.RepositorioService;
 import br.com.rodrigoamora.desafioandroid.ui.activity.MainActivity;
-import br.com.rodrigoamora.desafioandroid.ui.adapter.RepositorioAdapter;
+import br.com.rodrigoamora.desafioandroid.ui.adapter.RepositoryAdapter;
 import br.com.rodrigoamora.desafioandroid.ui.listener.OnItemClickListener;
 import br.com.rodrigoamora.desafioandroid.ui.listener.PaginateListener;
 import br.com.rodrigoamora.desafioandroid.util.FragmentUtil;
@@ -37,7 +37,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import retrofit2.Call;
 
-public class RepositorioFragment extends android.app.Fragment implements Delegate<List<Repositorio>> {
+public class RepositoryFragment extends android.app.Fragment implements Delegate<List<Repository>> {
 
     private String TAG_CACHE = "repositories";
 
@@ -48,14 +48,14 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
     RepositorioService service;
 
     private Call<ListaRepositorios> call;
-    private List<Repositorio> repositorios;
+    private List<Repository> repositories;
     private Integer page;
     private String linguagem;
     private Unbinder unbinder;
 
-    private CacheManager<List<Repositorio>> cacheManager;
-    private RepositorioAdapter adapter;
-    private RepositorioCallback callback;
+    private CacheManager<List<Repository>> cacheManager;
+    private RepositoryAdapter adapter;
+    private RepositoryCallback callback;
     private MainActivity activity;
 
     @Override
@@ -63,8 +63,8 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
-        this.callback = new RepositorioCallback(this);
-        this.repositorios = new ArrayList();
+        this.callback = new RepositoryCallback(this);
+        this.repositories = new ArrayList();
         this.cacheManager = new CacheManager<>();
 
         if (savedInstanceState != null) {
@@ -147,11 +147,11 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
 
     private void populateRecyclerView() {
         if (adapter == null) {
-            adapter = new RepositorioAdapter(activity, repositorios);
+            adapter = new RepositoryAdapter(activity, repositories);
             recyclerView.setAdapter(adapter);
-            adapter.setListener(new OnItemClickListener<Repositorio>() {
+            adapter.setListener(new OnItemClickListener<Repository>() {
                 @Override
-                public void onItemClick(Repositorio repositorio) {
+                public void onItemClick(Repository repositorio) {
                     if (NetworkUtil.checkConnection(activity)) {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("owner", repositorio.getOwner().getLogin());
@@ -173,7 +173,7 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
             call.enqueue(callback);
         } else {
             Toast.makeText(activity, getString(R.string.alert_no_internet), Toast.LENGTH_LONG).show();
-            this.repositorios = cacheManager.getCache(TAG_CACHE);
+            this.repositories = cacheManager.getCache(TAG_CACHE);
             populateRecyclerView();
         }
     }
@@ -188,12 +188,12 @@ public class RepositorioFragment extends android.app.Fragment implements Delegat
     }
 
     @Override
-    public void success(List<Repositorio> repositorios) {
-        if (!repositorios.isEmpty()) {
-            this.repositorios.addAll(repositorios);
+    public void success(List<Repository> repositories) {
+        if (!repositories.isEmpty()) {
+            this.repositories.addAll(repositories);
 
             this.cacheManager.deleteCache(TAG_CACHE);
-            this.cacheManager.saveCache(TAG_CACHE, this.repositorios);
+            this.cacheManager.saveCache(TAG_CACHE, this.repositories);
 
             if (page == 1) {
                 populateRecyclerView();

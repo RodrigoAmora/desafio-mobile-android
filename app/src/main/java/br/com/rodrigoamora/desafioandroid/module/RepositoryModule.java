@@ -8,10 +8,10 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 
 @Module
-public class RepositorioModule {
+public class RepositoryModule {
 
     @Provides
-    public RepositorioService getRepositorioService() {
+    public RepositorioService getRepositoryService() {
         Retrofit retrofit = RetrofitFactory.createRetrofit(BuildConfig.API_GITHUB);
         RepositorioService service = retrofit.create(RepositorioService.class);
         return service;

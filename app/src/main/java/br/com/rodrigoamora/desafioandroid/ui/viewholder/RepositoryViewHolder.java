@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import br.com.rodrigoamora.desafioandroid.R;
-import br.com.rodrigoamora.desafioandroid.model.Repositorio;
+import br.com.rodrigoamora.desafioandroid.model.Repository;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RepositorioViewHolder extends RecyclerView.ViewHolder{
+public class RepositoryViewHolder extends RecyclerView.ViewHolder{
 
     @BindView(R.id.layout_repositorio)
     CoordinatorLayout repositorioLayout;
@@ -37,12 +37,12 @@ public class RepositorioViewHolder extends RecyclerView.ViewHolder{
     @BindView(R.id.stars)
     TextView stars;
 
-    public RepositorioViewHolder(View itemView) {
+    public RepositoryViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
 
-    public void setValues(Repositorio repositorio) {
+    public void setValues(Repository repositorio) {
         String avatarURL = repositorio.getOwner().getAvatar_url();
         if (avatarURL != null && !avatarURL.isEmpty()) {
             Picasso.get().load(avatarURL).into(avatar);

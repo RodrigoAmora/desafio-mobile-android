@@ -2,17 +2,17 @@ package br.com.rodrigoamora.desafioandroid.model.callback;
 
 import java.util.List;
 
-import br.com.rodrigoamora.desafioandroid.model.Repositorio;
+import br.com.rodrigoamora.desafioandroid.model.Repository;
 
 public class ListaRepositorios {
 
-    private List<Repositorio> items;
+    private List<Repository> items;
 
-    public List<Repositorio> getItems() {
+    public List<Repository> getItems() {
         return items;
     }
 
-    public void setItems(List<Repositorio> items) {
+    public void setItems(List<Repository> items) {
         this.items = items;
     }
 

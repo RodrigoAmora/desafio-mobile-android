@@ -14,7 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import br.com.rodrigoamora.desafioandroid.R;
-import br.com.rodrigoamora.desafioandroid.ui.fragment.RepositorioFragment;
+import br.com.rodrigoamora.desafioandroid.ui.fragment.RepositoryFragment;
 import br.com.rodrigoamora.desafioandroid.util.FragmentUtil;
 
 public class MainActivity extends AppCompatActivity
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configurarNavigationView();
-        changeFragment(new RepositorioFragment());
+        changeFragment(new RepositoryFragment());
     }
 
     @Override
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_repositories:
-                changeFragment(new RepositorioFragment());
+                changeFragment(new RepositoryFragment());
                 break;
         }
 

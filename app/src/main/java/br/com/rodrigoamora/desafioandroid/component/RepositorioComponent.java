@@ -1,12 +1,12 @@
 package br.com.rodrigoamora.desafioandroid.component;
 
-import br.com.rodrigoamora.desafioandroid.module.RepositorioModule;
-import br.com.rodrigoamora.desafioandroid.ui.fragment.RepositorioFragment;
+import br.com.rodrigoamora.desafioandroid.module.RepositoryModule;
+import br.com.rodrigoamora.desafioandroid.ui.fragment.RepositoryFragment;
 import dagger.Component;
 
-@Component(modules = RepositorioModule.class)
+@Component(modules = RepositoryModule.class)
 public interface RepositorioComponent {
 
-    void inject(RepositorioFragment repositorioFragment);
+    void inject(RepositoryFragment repositoryFragment);
 
 }

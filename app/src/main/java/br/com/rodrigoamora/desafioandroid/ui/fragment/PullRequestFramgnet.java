@@ -64,12 +64,12 @@ public class PullRequestFramgnet extends Fragment implements Delegate<List<PullR
         pullRequests = new ArrayList();
 
         if (getArguments() != null) {
-            repo = getArguments().getString("repositorio");
+            repo = getArguments().getString("repository");
             owner = getArguments().getString("owner");
         }
 
         if (savedInstanceState != null) {
-            repo = savedInstanceState.getString("repositorio");
+            repo = savedInstanceState.getString("repository");
             owner = savedInstanceState.getString("owner");
         }
     }
@@ -94,7 +94,7 @@ public class PullRequestFramgnet extends Fragment implements Delegate<List<PullR
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("repositorio", repo);
+        outState.putString("repository", repo);
         outState.putString("owner", owner);
     }
 
@@ -102,7 +102,7 @@ public class PullRequestFramgnet extends Fragment implements Delegate<List<PullR
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         if (savedInstanceState != null) {
-            repo = savedInstanceState.getString("repositorio");
+            repo = savedInstanceState.getString("repository");
             owner = savedInstanceState.getString("owner");
         }
     }
